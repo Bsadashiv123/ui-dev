@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html ng-app="familyapp">
+<head>
+<title></title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+</head>
+
+<body ng-controller="familyController">
+<div class="container">
+  <div ng-show="createPage">
+    <div class="row">
+      <hr>
+      <h2>Enter Your Family Details</h2>
+      <form class="form-horizontal">
+        <div class="form-group">
+          <div class="col-md-12">
+            <input type="text" ng-model="gmodel.firstname"  class="form-control" placeholder="First Name" >
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <input type="text" ng-model="gmodel.lastname" class="form-control" placeholder="Last Name">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <input type="number" ng-model="gmodel.age"  class="form-control" placeholder="Age">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <input type="text" ng-model="gmodel.gender"  class="form-control" placeholder="Gender">
+          </div>
+        </div>
+      </form>
+      <hr>
+      <button ng-disabled="incomplete" ng-click="savecreate(gmodel)" class="btn btn-success" ><span class="glyphicon glyphicon-save"></span>Save</button>
+    </div>
+  </div>
+  
+  
+  
+  <div ng-show="viewPage">
+  <hr>
+   <div class="row">
+   <div class="col-md-12">Total Family Members {{familyLength}}</div>
+    <table width="600" class="table table-bordered table-striped">
+      <tbody>
+        <tr>
+        <th></th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Actions</th>
+        </tr>
+        <tr ng-repeat="member in members">
+          <td><input type="checkbox" ng-model="selectMember"></td>
+          <td>{{member.firstname}}</td>
+          <td>{{member.lastname}}</td>
+          <td>{{member.age}}</td>
+          <td>{{member.gender}}</td>
+          <td><button ng-click="deleteMember(member.id)" class="btn btn-danger">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+    
+    
+  </div>
+ </div>
+ 
+ 
+</div>
+<script src="day-7-new-app.js"></script>
+</body>
+</html>
